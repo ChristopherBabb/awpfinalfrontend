@@ -1,0 +1,87 @@
+import React from "react";
+import { navigate } from "@reach/router";
+import { Question } from "../db";
+
+export default class AskQuestion extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      title: "",
+      question: "",
+      error: "",
+    };
+
+    this.titleChange = this.titleChange.bind(this);
+    this.questionChange = this.questionChange.bind(this);
+    this.submitForm = this.submitForm.bind(this);
+  }
+
+  titleChange({ target }) {
+    this.setState((_) => ({
+      title: target.value,
+      error: "",
+    }));
+  }
+
+  questionChange({ target }) {
+    this.setState((_) => ({
+      question: target.value,
+      error: "",
+    }));
+  }
+
+  submitForm(event) {
+    event.preventDefault();
+    if (this.state.title !== "" && this.state.question !== "") {
+      this.props.addPost(
+        new Question({
+          title: this.state.title,
+          question: this.state.question,
+          upvotes: 0,
+          downvotes: 0,
+          answers: [],
+        })
+      );
+      navigate("/");
+    }
+    if (this.state.title === "") {
+      this.setState((_) => ({
+        error: "What is the name of your post?",
+      }));
+    }
+    if (this.state.question === "") {
+      this.setState((_) => ({
+        error: "Please ask something",
+      }));
+    }
+  }
+
+  render() {
+    return (
+      <>
+        <form className="ask__container">
+          <div className="ask__form">
+            <input
+              name="title"
+              value={this.state.title}
+              placeholder="Name your question"
+              onChange={this.titleChange}
+            ></input>
+            <input
+              name="question"
+              value={this.state.question}
+              placeholder="Your question"
+              onChange={this.questionChange}
+            ></input>
+            <input
+              type="submit"
+              onClick={this.submitForm}
+              value="Submit"
+            ></input>
+          </div>
+          <span className="ask__error">{this.state.error}</span>
+        </form>
+      </>
+    );
+  }
+}

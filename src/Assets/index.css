@@ -1,0 +1,140 @@
+body {
+  font-family: "Helvetica", "comic-sans", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background-color: #212121;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+  font-family: Helvetica;
+  color: #c260c0;
+}
+
+h4 {
+  color: #c260c0;
+}
+
+p {
+  color: #c260c0;
+}
+
+.page-title {
+  margin: 0 auto;
+  width: 16em;
+  padding: 2em;
+  background-color: #121212;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 3em;
+}
+
+.title {
+  width: 14em;
+  margin: 0 auto;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.questions__ask_button,
+.post__answer_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: #c260c0;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  height: 50px;
+  color: black;
+  border-radius: 20px;
+  border: none;
+}
+
+.questions__post {
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #424242;
+  margin: 3em 10em 3em 10em;
+  display: flex;
+  flex-flow: column nowrap;
+  border-radius: 10px;
+}
+
+.post__ratings {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post__rating span.material-icons {
+  width: 24px;
+  color: #57d9a3;
+}
+
+.post__rating {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 1rem;
+  align-items: center;
+  cursor: pointer;
+  color: #57d9a3;
+}
+
+.post__rating:hover {
+  background-color: rgba(87, 217, 163, 0.1);
+  border-radius: 10px;
+}
+
+.answer__container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: baseline;
+  transform: translateY(-100%);
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: -1;
+  opacity: 0;
+}
+
+.answer__container.shown {
+  transform: translateY(0);
+  height: inherit;
+  opacity: 1;
+  z-index: 0;
+}
+
+.post__answer_button {
+  position: relative;
+  z-index: 1;
+  width: 150px;
+}
+
+.post__answer_button.close {
+  background-color: grey;
+}
+
+.ask__container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.ask__form,
+.answer__form {
+  display: flex;
+}
+
+.ask__error,
+.answer_error {
+  display: block;
+  color: red;
+  text-align: center;
+}
