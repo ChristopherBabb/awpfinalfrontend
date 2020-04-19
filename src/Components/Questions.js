@@ -24,7 +24,7 @@ export default class Questions extends React.Component {
       <>
         {this.whatToRender()}
         <Link to="/ask" className="questions__ask_button">
-          Ask a question!
+          + Ask Question!
         </Link>
       </>
     );

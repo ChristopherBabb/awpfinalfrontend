@@ -64,7 +64,7 @@ export default class Question extends React.Component {
             .querySelector(".answer__container")
             .classList.remove("shown");
           document.querySelector(".post__answer_button").innerText =
-            "Answer this question";
+            "+ Answer";
         }
       }
     );
@@ -109,8 +109,8 @@ export default class Question extends React.Component {
       <>
         <li>
           <article className="questions__post">
+            <div className="title-votes">
             <h3>{this.state.question.title}</h3>
-            <p>{this.state.question.question}</p>
             <div className="post__ratings">
               <div className="post__rating" onClick={this.upvote}>
                 <span className="material-icons">thumb_up_alt</span>
@@ -121,9 +121,8 @@ export default class Question extends React.Component {
                 <span>{this.state.question.downvotes}</span>
               </div>
             </div>
-            <span className="post__answer_button" onClick={this.toggleAnswer}>
-              Write an answer!
-            </span>
+            </div>
+            <p className="question-p">{this.state.question.question}</p>
             <form className="answer__container">
               <div className="answer__form">
                 <input
@@ -141,6 +140,9 @@ export default class Question extends React.Component {
               <span className="answer_error">{this.state.error}</span>
             </form>
             {this.renderAnswers()}
+            <span className="post__answer_button" onClick={this.toggleAnswer}>
+              + Answer
+            </span>
           </article>
         </li>
       </>
